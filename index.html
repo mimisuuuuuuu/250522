@@ -29,7 +29,7 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      background: rgba(0, 0, 0, 0.4); /* 흐린 배경 */
+      background: rgba(0, 0, 0, 0.4);
       padding: 6px 10px;
       font-size: 18px;
       border-radius: 5px;
@@ -62,20 +62,22 @@
   <button id="button" onclick="nextStage()">🙏 추모하기</button>
 
   <script>
-    let currentStage = 1;
     const totalStages = 5;
+    let currentStage = 1; // stage1.jpg에서 시작
     const image = document.getElementById("image");
     const statusText = document.getElementById("statusText");
+    const button = document.getElementById("button");
 
     function nextStage() {
       if (currentStage < totalStages) {
+        const percent = currentStage * 20;
         currentStage++;
         image.src = `stage${currentStage}.jpg`;
-        statusText.innerText = `천국으로 가기까지 ${(currentStage - 1) * 20}%`;
+        statusText.innerText = `천국으로 가기까지 ${percent}%`;
       } else {
         statusText.innerText = `천국으로 가기까지 100%`;
-        document.getElementById("button").disabled = true;
-        document.getElementById("button").innerText = "천국에도달하였습니다";
+        button.disabled = true;
+        button.innerText = "🌌 추모가 완료되었습니다";
       }
     }
   </script>
