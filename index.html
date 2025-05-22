@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>디지털 장례식</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    #image {
+      width: 400px;
+      border-radius: 10px;
+    }
+
+    #statusText {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.4); /* 흐린 배경 */
+      padding: 6px 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      color: white;
+    }
+
+    #button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container">
+    <img id="image" src="stage1.jpg" alt="AI Selfie">
+    <div id="statusText">천국으로 가기까지 0%</div>
+  </div>
+
+  <button id="button" onclick="nextStage()">🙏 추모하기</button>
+
+  <script>
+    let currentStage = 1;
+    const totalStages = 5;
+    const image = document.getElementById("image");
+    const statusText = document.getElementById("statusText");
+
+    function nextStage() {
+      if (currentStage < totalStages) {
+        currentStage++;
+        image.src = `stage${currentStage}.jpg`;
+        statusText.innerText = `천국으로 가기까지 ${(currentStage - 1) * 20}%`;
+      } else {
+        statusText.innerText = `천국으로 가기까지 100%`;
+        document.getElementById("button").disabled = true;
+        document.getElementById("button").innerText = "천국에도달하였습니다";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
